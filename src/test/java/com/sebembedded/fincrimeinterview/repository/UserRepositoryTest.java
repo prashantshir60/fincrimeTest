@@ -36,6 +36,7 @@ class UserRepositoryTest {
 
     @Test
     void query() {
-        assertThrows(UnsupportedOperationException.class, () -> userRepository.findByFirstNameAndLastName("test", "test"));
+        userRepository.save(new User("test", "test", "test", Occupation.UNEMPLOYED));
+        assertFalse(userRepository.findByFirstNameAndLastName("test", "test").isEmpty());
     }
 }
